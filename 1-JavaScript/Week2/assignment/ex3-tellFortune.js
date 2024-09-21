@@ -32,34 +32,66 @@ body, this code is now written once only in a separated function.
 
 // This function should take an array as its parameter and return
 // a randomly selected element as its return value.
-function selectRandomly(/* TODO parameter(s) go here */) {
-  // TODO complete this function
+function selectRandomly(arr) {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
 }
 
-export function tellFortune(/* TODO add parameter(s) here */) {
-  // TODO complete this function
+export function tellFortune(numKids, partnerNames, locations, jobTitles) {
+  const kids = selectRandomly(numKids);
+  const partner = selectRandomly(partnerNames);
+  const location = selectRandomly(locations);
+  const job = selectRandomly(jobTitles);
+
+  return `You will be a ${job} in ${location}, married to ${partner} with ${kids} kids.`;
 }
 
 function main() {
-  const numKids = [
-    // TODO add elements here
+  const numKids = [ 1, 2, 3, 4, 5 ];
+
+  const femalePartnerNames = [ 
+    "Abigal", 
+    "Ada", 
+    "Anna" 
   ];
 
-  const partnerNames = [
-    // TODO add elements here
+  const malePartnerNames = [ 
+    "Bart", 
+    "Bas", 
+    "Bjorn" 
   ];
 
-  const locations = [
-    // TODO add elements here
+  const locations = [ 
+    "Amsterdam", 
+    "Rotterdam", 
+    "Utrecht", 
+    "Eindhoven", 
+    "Groningen" 
   ];
 
   const jobTitles = [
-    // TODO add elements here
+    "QA Engineer", 
+    "Project Manager", 
+    "DevOps Engineer", 
+    "Node.js Developer"
   ];
 
-  console.log(tellFortune(numKids, partnerNames, locations, jobTitles));
-  console.log(tellFortune(numKids, partnerNames, locations, jobTitles));
-  console.log(tellFortune(numKids, partnerNames, locations, jobTitles));
+  const genders = [ 
+    "male", 
+    "female" 
+  ];
+  
+  const gender = selectRandomly(genders);
+
+  if ( gender === "male" ) {
+    console.log(tellFortune(numKids, femalePartnerNames, locations, jobTitles));
+    console.log(tellFortune(numKids, femalePartnerNames, locations, jobTitles));
+    console.log(tellFortune(numKids, femalePartnerNames, locations, jobTitles));
+  } else if ( gender === "female" ) {
+    console.log(tellFortune(numKids, malePartnerNames, locations, jobTitles));
+    console.log(tellFortune(numKids, malePartnerNames, locations, jobTitles));
+    console.log(tellFortune(numKids, malePartnerNames, locations, jobTitles));
+  }
 }
 
 // ! Do not change or remove the code below
