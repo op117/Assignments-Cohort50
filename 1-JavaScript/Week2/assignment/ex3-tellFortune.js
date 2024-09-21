@@ -49,16 +49,12 @@ export function tellFortune(numKids, partnerNames, locations, jobTitles) {
 function main() {
   const numKids = [ 1, 2, 3, 4, 5 ];
 
-  const femalePartnerNames = [ 
+  const partnerNames = [ 
     "Abigal", 
     "Ada", 
-    "Anna" 
-  ];
-
-  const malePartnerNames = [ 
-    "Bart", 
-    "Bas", 
-    "Bjorn" 
+    "Anna",
+    "Aleida",
+    "Amalia"
   ];
 
   const locations = [ 
@@ -73,25 +69,13 @@ function main() {
     "QA Engineer", 
     "Project Manager", 
     "DevOps Engineer", 
-    "Node.js Developer"
+    "Node.js Developer",
+    "Angular Developer"
   ];
 
-  const genders = [ 
-    "male", 
-    "female" 
-  ];
-  
-  const gender = selectRandomly(genders);
-
-  if ( gender === "male" ) {
-    console.log(tellFortune(numKids, femalePartnerNames, locations, jobTitles));
-    console.log(tellFortune(numKids, femalePartnerNames, locations, jobTitles));
-    console.log(tellFortune(numKids, femalePartnerNames, locations, jobTitles));
-  } else if ( gender === "female" ) {
-    console.log(tellFortune(numKids, malePartnerNames, locations, jobTitles));
-    console.log(tellFortune(numKids, malePartnerNames, locations, jobTitles));
-    console.log(tellFortune(numKids, malePartnerNames, locations, jobTitles));
-  }
+  console.log(tellFortune(numKids, partnerNames, locations, jobTitles));
+  console.log(tellFortune(numKids, partnerNames, locations, jobTitles));
+  console.log(tellFortune(numKids, partnerNames, locations, jobTitles));
 }
 
 // ! Do not change or remove the code below

@@ -18,7 +18,6 @@ Full description at: https://github.com/HackYourFuture/Assignments/tree/main/1-J
    `giveCompliment` function to the console.
 -----------------------------------------------------------------------------*/
 export function giveCompliment(name) {
-  // TODO complete this function
   const compliments = [
     "great",
     "awesome",
@@ -38,7 +37,6 @@ export function giveCompliment(name) {
 }
 
 function main() {
-  // TODO substitute your own name for "HackYourFuture"
   const myName = 'Alex P';
 
   console.log(giveCompliment(myName));
