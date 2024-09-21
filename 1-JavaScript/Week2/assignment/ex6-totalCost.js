@@ -20,22 +20,44 @@ instead!
 3. Complete the unit test functions and verify that all is working as expected.
 -----------------------------------------------------------------------------*/
 const cartForParty = {
-  // TODO complete this object
+  pizza: 5.29,
+  beers: 1.5,
+  chips: 1.55,
+  soda: 1.99,
+  cookies: 2.99,
 };
 
-function calculateTotalPrice(/* TODO parameter(s) go here */) {
-  // TODO replace this comment with your code
+function calculateTotalPrice(cart) {
+  let total = 0;
+
+  for (const [item, price] of Object.entries(cart)) {
+    let itemPrice = price;
+
+    if (typeof itemPrice !== 'number') {
+      itemPrice = Number(itemPrice);
+    }
+
+    if (!isNaN(itemPrice)) {
+      total += itemPrice;
+    } else {
+      console.log(`Skipping invalid price for item "${item}": ${price}`);
+    }
+  }
+
+  return `Total: €${total.toFixed(2)}`;
 }
 
 // ! Test functions (plain vanilla JavaScript)
 function test1() {
   console.log('\nTest 1: calculateTotalPrice should take one parameter');
-  // TODO replace this comment with your code
+  console.assert(calculateTotalPrice.length === 1, 'Test 1 Failed: Function should take one parameter');
 }
 
 function test2() {
   console.log('\nTest 2: return correct output when passed cartForParty');
-  // TODO replace this comment with your code
+  const expected = 'Total: €13.32';
+  const actual = calculateTotalPrice(cartForParty);
+  console.assert(actual === expected, `Test 2 Failed: Expected "${expected}", but got "${actual}"`);
 }
 
 function test() {
