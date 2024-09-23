@@ -25,26 +25,35 @@ cat.style.left = '0px';
 let originalCatSrc = cat.src;
 let screenWidth = window.innerWidth;
 let middle = screenWidth / 2;
+let currentLeft = 0;
+let interval;
 
-function catWalk() {
-   let currentLeft = parseInt(cat.style.left);
+function walkToMiddle() {
+  currentLeft += 10;
+  cat.style.left = currentLeft + 'px';
 
-   if (currentLeft > screenWidth) {
-      cat.style.left = '0px';
-   } else {
-      cat.style.left = currentLeft + 10 + 'px';
-   }
+  if (currentLeft >= middle - cat.width / 2 && currentLeft <= middle + cat.width / 2) {
+    clearInterval(interval);
+    cat.src = 'https://media1.tenor.com/images/2de63e950fb254920054f9bd081e8157/tenor.gif';
 
-   let catWidth = cat.width;
-   if (currentLeft >= (middle - catWidth / 2) && currentLeft <= (middle + catWidth / 2)) {
-      cat.src = 'https://media1.tenor.com/images/2de63e950fb254920054f9bd081e8157/tenor.gif';
-      setTimeout(() => {
-        cat.src = originalCatSrc;
-      }, 5000);
-   }
+    setTimeout(() => {
+      cat.src = originalCatSrc;
+      interval = setInterval(walkToEnd, 50);
+    }, 5000);
+  }
 }
 
+function walkToEnd() {
+  currentLeft += 10;
+  cat.style.left = currentLeft + 'px';
+
+  if (currentLeft > screenWidth) {
+    currentLeft = 0;
+    clearInterval(interval);
+    interval = setInterval(walkToMiddle, 50);
+  }
+}
 
 window.onload = function() {
-   setInterval(catWalk, 50);
+  interval = setInterval(walkToMiddle, 50);
 };
