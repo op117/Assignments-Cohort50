@@ -1,0 +1,15 @@
+*** Unit Test Error Report ***
+
+ PASS  .dist/2-Browsers/Week1/unit-tests/ex5-catWalk.test.js (7.625 s)
+  br-wk1-ex5-catWalk
+    ✅ HTML should be syntactically valid (301 ms)
+    ✅ should have all TODO comments removed (1 ms)
+    ✅ should use `setInterval()` and/or `setTimeout()` (1 ms)
+    ✅ should use `window.onload` or `window.addEventListener()` for the `load` or `DOMContentLoaded` event (1 ms)
+    ✅ `window.onload` or `window.addEventListener` should not call its event handler function (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        8.77 s
+Ran all test suites matching /\/Users\/ap\/IT_INFO\/HYF\/Assignments-Cohort50\/.dist\/2-Browsers\/Week1\/unit-tests\/ex5-catWalk.test.js/i.

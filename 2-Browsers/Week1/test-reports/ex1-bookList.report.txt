@@ -1,0 +1,16 @@
+*** Unit Test Error Report ***
+
+ PASS  .dist/2-Browsers/Week1/unit-tests/ex1-bookList.test.js (7.18 s)
+  br-wk1-ex1-bookList
+    ✅ HTML should be syntactically valid (285 ms)
+    ✅ should have all TODO comments removed (1 ms)
+    ✅ should contain a <ul> that is a child of <div id="bookList"> (2 ms)
+    ✅ should contain a <ul> with 3 <li> elements (1 ms)
+    ✅ should contain an <li> with title and author for each book of the `myBooks` array (3 ms)
+    ✅ should contain an <img> element for each book (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       6 passed, 6 total
+Snapshots:   0 total
+Time:        8.239 s
+Ran all test suites matching /\/Users\/ap\/IT_INFO\/HYF\/Assignments-Cohort50\/.dist\/2-Browsers\/Week1\/unit-tests\/ex1-bookList.test.js/i.
