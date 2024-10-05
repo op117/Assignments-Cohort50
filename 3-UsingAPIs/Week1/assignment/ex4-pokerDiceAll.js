@@ -24,12 +24,13 @@ exercise file.
 
 // The line below makes the rollDie() function available to this file.
 // Do not change or remove it.
-const rollDie = require('../../helpers/pokerDiceRoller');
+//rollDie is defined as a named export
+const rollDie = require('../../helpers/pokerDiceRoller').rollDie;
 
 export function rollDice() {
-  // TODO Refactor this function
   const dice = [1, 2, 3, 4, 5];
-  return rollDie(1);
+  const diceRolls = dice.map((_, index) => rollDie(index + 1));
+  return Promise.all(diceRolls);
 }
 
 function main() {
