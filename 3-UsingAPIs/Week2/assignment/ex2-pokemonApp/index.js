@@ -21,18 +21,55 @@ Use async/await and try/catch to handle promises.
 Try and avoid using global variables. As much as possible, try and use function 
 parameters and return values to pass data back and forth.
 ------------------------------------------------------------------------------*/
-function fetchData(/* TODO parameter(s) go here */) {
-  // TODO complete this function
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }  
 }
 
-function fetchAndPopulatePokemons(/* TODO parameter(s) go here */) {
-  // TODO complete this function
+async function fetchAndPopulatePokemons(selectElement) {
+  const url = 'https://pokeapi.co/api/v2/pokemon?limit=150';
+  try {
+    const data = await fetchData(url);
+    const pokemons = data.results;
+    pokemons.forEach((pokemon, index) => {
+      const option = document.createElement('option');
+      option.value = pokemon.url;
+      option.textContent = `${index + 1}. ${pokemon.name}`;
+      selectElement.appendChild(option);
+    });  
+  } catch (error) {
+    console.error('Error populating Pokémon list:', error);
+  }  
 }
 
-function fetchImage(/* TODO parameter(s) go here */) {
-  // TODO complete this function
+async function fetchImage(url, imgElement) {
+  try {
+    const data = await fetchData(url);
+    const imageUrl = data.sprites.front_default;
+    imgElement.src = imageUrl;
+    imgElement.alt = data.name;
+  } catch (error) {
+    console.error('Error fetching Pokémon image:', error);
+  }
 }
 
 function main() {
-  // TODO complete this function
+  const selectElement = document.getElementById('pokemon-select');
+  const imgElement = document.getElementById('pokemon-image');
+
+  fetchAndPopulatePokemons(selectElement);
+  selectElement.addEventListener('change', (event) => {
+    const selectedUrl = event.target.value;
+    fetchImage(selectedUrl, imgElement);
+  });
 }
+
+window.addEventListener('load', main);
