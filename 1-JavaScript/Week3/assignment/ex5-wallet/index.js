@@ -22,7 +22,7 @@ function createWallet(name, cash = 0) {
 
   function transferInto(wallet, amount) {
     console.log(
-      `Transferring ${eurosFormatter.format(amount)} from ${wallet.name} to ${wallet.name}`
+      `Transferring ${eurosFormatter.format(amount)} from ${getName()} to ${wallet.getName()}`
     );
     const withdrawnAmount = withdraw(amount);
     wallet.deposit(withdrawnAmount);
