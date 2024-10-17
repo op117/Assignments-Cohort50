@@ -21,9 +21,13 @@ function addCurrentTime() {
     timeElement.textContent = currentTime;
   }
   
-  setInterval(updateTime, 1000);
+  const interval = setInterval(updateTime, 1000);
 
   updateTime();
+
+  window.addEventListener('beforeunload', () => {
+    clearInterval(interval);
+  });
 }
 
 window.onload = addCurrentTime;
